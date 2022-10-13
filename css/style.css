@@ -1,0 +1,70 @@
+body {
+    background-color: black;
+    color: white;
+}
+
+.wrapper {
+    /* width: 100%; */
+    margin: auto;
+    height: 500px;
+    width: 55%;
+    text-align: center;
+}
+
+header {
+    width: 1000px;
+    height: 150px;
+    border: 2px solid white;
+    margin: 10px;
+}
+
+header h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30pt;
+}
+
+.dealer-health {
+    width: 900px;
+    height: 20px;
+}
+
+progress {
+    accent-color: white;
+}
+
+.dealer-damage {
+    font-size: 50pt;
+}
+
+.player-health {
+    width: 450px;
+    height: 20px;
+}
+
+.player-damage {
+    font-size: 20pt;
+}
+
+.screen-prompt {
+    opacity: 0;
+}
+
+.lose-prompt {
+    position: fixed;
+    text-align: center;
+    background-color: black;
+    border: 2px solid white;
+    width: 900px;
+    height: 400px;
+    margin-left: 70px;
+    opacity: 0;
+    z-index: -1;
+}
+
+.lose-prompt p {
+    font-size: 30pt;
+}
+
+.lose-prompt hr {
+    width: 500px;
+}
