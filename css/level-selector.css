@@ -46,3 +46,23 @@ h2 {
 .user-icon:hover {
     opacity: 80%;
 }
+
+@media (orientation: portrait) {
+    * {
+        margin: 0;
+    }
+
+    .wrapper {
+        width: max-content;
+    }
+    
+    header {
+        width: 340px;
+        margin: 20px;
+    }
+
+    a {
+        width: 100px;
+        margin: 15px;
+    }
+}

@@ -6,7 +6,7 @@ body {
 .wrapper {
     margin: auto;
     height: 500px;
-    width: 55%;
+    width: max-content;
     text-align: center;
 }
 
@@ -172,4 +172,29 @@ progress {
     width: 100px;
     height: 24px;
     border-radius: 7px;
+}
+
+@media (orientation: portrait) {
+    * {
+        margin: 0;
+    }
+
+    .wrapper {
+        width: max-content;
+    }
+    
+    header {
+        width: 340px;
+        margin: 20px;
+    }
+
+    .dealer-health {
+        width: 200px;
+        height: 20px;
+    }
+
+    .player-health {
+        width: 200px;
+        height: 20px;
+    }
 }

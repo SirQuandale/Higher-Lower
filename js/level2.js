@@ -176,11 +176,13 @@ function selectCovenant() {
 function showUserSettings() {
   document.querySelector('.user-settings-prompt').style.opacity = "100";
   document.querySelector('.user-settings-prompt').style.zIndex = "1";
+  document.querySelector('.covenant-select').disabled = false;
 }
 
 function hideUserSettings() {
   document.querySelector('.user-settings-prompt').style.opacity = "0";
   document.querySelector('.user-settings-prompt').style.zIndex = "-1";
+  document.querySelector('.covenant-select').disabled = true;
 }
 
 userIconButton.addEventListener('click', showUserSettings);
@@ -191,4 +193,5 @@ function changeName() {
   console.log(playerNametag.value);
 }
 
+document.querySelector('.covenant-select').disabled = false;
 playerNametag.addEventListener('change', changeName);
