@@ -10,31 +10,46 @@
 <body>
     <div class="wrapper">
         <header>
+            <img src="img/user_icon.png" title="User Settings" alt="User Settings" class="user-icon">
             <h1 class="header-text">Hoger Lager</h1>
             <p>Made By: Kuray Bas</p>
         </header>
         <p>Dealer Health</p>
-        <progress class="dealer-health" value="10000" max="10000"></progress> <!--progress bar to make a health bar-->
+        <progress class="dealer-health" value="9000" max="9000"></progress> <!--progress bar to make a health bar-->
         <div class="lose-prompt">
             <p>You Died</p>
             <hr>
             <br>
             <button class="reset">Retry</button>
         </div>
+        <div class="user-settings-prompt">
+            <img src="img/x_icon.png" title="Hide User Settings" alt="Hide Settings" class="x-icon">
+            <h2>User Settings</h2>
+            <p>Settings</p>
+            <hr>
+            <br>
+            <label>Name</label>
+            <input type="text" class="player-name"><br><br>
+            <select class="covenant-select" Name="Name_of_list_box" Size="Number_of_options" onchange="selectCovenant()">
+                <option class="Cov1" value="Covenant1">Easy</option>  
+                <option class="Cov2" value="Covenant2">Medium</option>  
+                <option class="Cov3" value="Covenant3">Hard</option>
+              </select>
+        </div>
         <main>
+            <br>
             <p class="dealer-damage">99</p> <!--starting text-->
             <button class="button-hoger">Hoger</button>
             <button class="button-lager">Lager</button>
             <p class="player-damage">99</p> <!--staring text-->
             <br>
-            <p class="screen-prompt">Prompt</p> <!--starting text -->
+            <p class="screen-prompt">Prompt</p> <!--starting text (invisible in css)-->
             <br>
-            <p>Player Health</p>
-            <button class="healing">7</button> <!--starting text -->
-            <progress class="player-health" value="1000" max="1000"></progress> <!--player health bar made with -->
+            <p class="player-name-tag">Player Health</p>
+            <button class="healing"></button> <!--starting text -->
+            <progress class="player-health" value="1000" max="1000"></progress> <!--player health bar made with progress code-->
         </main>
     </div>
     <script src="js/main.js"></script>
-    <script src="js/covenant.js"></script>
 </body>
 </html>
