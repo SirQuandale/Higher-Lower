@@ -184,7 +184,7 @@ progress {
     }
     
     header {
-        width: 340px;
+        width: 390px;
         margin: 20px;
     }
 
@@ -196,5 +196,10 @@ progress {
     .player-health {
         width: 200px;
         height: 20px;
+    }
+
+    .user-settings-prompt {
+        width: 300px;
+        margin: 35px;
     }
 }
