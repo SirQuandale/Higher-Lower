@@ -214,7 +214,7 @@ progress {
         margin: screen  ;
     }
 
-    progress::-webkit-progress-value {
+    progress {
         accent-color: darkgrey;
       }
 }
