@@ -17,6 +17,11 @@ header {
     margin: 10px;
 }
 
+header a {
+    text-decoration: none;
+    color: white;
+}
+
 header h1 {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 30pt;
@@ -80,13 +85,31 @@ progress {
 }
 
 .button-hoger {
-    width: 50px;
-    height: 25px;
+    width: 60px;
+    height: 35px;
+    border-radius: 7px;
 }
 
 .button-lager {
-    width: 50px;
-    height: 25px;
+    width: 60px;
+    height: 35px;
+    border-radius: 7px;
+}
+
+.button-hoger:hover {
+    border: 1px solid black;
+}
+
+.button-lager:hover {
+    border: 1px solid black;
+}
+
+.button-hoger:active {
+    border: 2px solid black;
+}
+
+.button-lager:active {
+    border: 2px solid black;
 }
 
 .user-icon {
@@ -102,7 +125,7 @@ progress {
 .user-settings-prompt {
     position: fixed;
     text-align: center;
-    background-color: rgba(0, 0, 0, 0.92);
+    background-color: rgba(0, 0, 0, 0.94);
     border: 2px solid white;
     width: 900px;
     height: 400px;
@@ -124,4 +147,29 @@ progress {
 
 .x-icon:hover {
     opacity: 80%;
+}
+
+.healing {
+    width: 40px;
+    height: 40px;
+    border-radius: 7px;
+}
+
+.healing:hover {
+    border: 1px solid black;
+}
+
+.healing:active {
+    border: 2px solid black;
+}
+
+.player-name {
+    width: 200px;
+    border-radius: 8px;
+}
+
+.covenant-select {
+    width: 100px;
+    height: 24px;
+    border-radius: 7px;
 }

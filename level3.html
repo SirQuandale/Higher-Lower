@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hoger Lager</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <img src="img/user_icon.png" title="User Settings" alt="User Settings" class="user-icon">
+            <h1 class="header-text">
+                <a href="index.html">Hoger Lager</a>
+            </h1>
+            <p>Made By: Kuray Bas</p>
+        </header>
+        <br>
+        <p>Dealer Level 3 Health</p>
+        <progress class="dealer-health" value="18000" max="18000"></progress> <!--progress bar to make a health bar-->
+        <div class="lose-prompt">
+            <p>You Died</p>
+            <hr>
+            <br>
+            <button class="reset">Retry</button>
+        </div>
+        <div class="user-settings-prompt">
+            <img src="img/x_icon.png" title="Hide User Settings" alt="Hide Settings" class="x-icon">
+            <h2>User Settings</h2>
+            <p>Settings</p>
+            <hr>
+            <br>
+            <label>Enter Your Name</label> 
+            <br>
+            <input type="text" class="player-name"><br><br>
+            <select class="covenant-select" Name="Name_of_list_box" Size="Number_of_options" onchange="selectCovenant()">
+                <option class="Cov1" value="Covenant1">Easy</option>  
+                <option class="Cov2" value="Covenant2">Medium</option>  
+                <option class="Cov3" value="Covenant3">Hard</option>
+              </select>
+        </div>
+        <main>
+            <br>
+            <p class="dealer-damage">99</p> <!--starting text-->
+            <br>
+            <button class="button-hoger">Hoger</button>
+            <button class="button-lager">Lager</button>
+            <br>
+            <br>
+            <p class="player-damage">99</p> <!--staring text-->
+            <br>
+            <p class="screen-prompt">Prompt</p> <!--starting text (invisible in css)-->
+            <br>
+            <p class="player-name-tag">Player Health</p>
+            <button class="healing"></button> <!--starting text -->
+            <progress class="player-health" value="1000" max="1000"></progress> <!--player health bar made with progress code-->
+        </main>
+    </div>
+    <script src="js/level3.js"></script>
+</body>
+</html>
