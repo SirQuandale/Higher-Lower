@@ -215,10 +215,6 @@ progress {
     }
 
     progress::-webkit-progress-value {
-        background: black;
-      }
-      
-      progress::-moz-progress-bar {
-        background: white;
+        accent-color: darkgrey;
       }
 }
