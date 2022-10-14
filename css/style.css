@@ -155,14 +155,6 @@ progress {
     border-radius: 7px;
 }
 
-.healing:hover {
-    border: 1px solid black;
-}
-
-.healing:active {
-    border: 2px solid black;
-}
-
 .player-name {
     width: 200px;
     border-radius: 8px;
@@ -172,6 +164,16 @@ progress {
     width: 100px;
     height: 24px;
     border-radius: 7px;
+}
+
+@media (orientation: landscape) {
+    .healing:active {
+        border: 2px solid black;
+    }
+
+    .healing:hover {
+        border: 1px solid black;
+    }
 }
 
 @media (orientation: portrait) {
@@ -213,10 +215,10 @@ progress {
     }
 
     progress::-webkit-progress-value {
-        background: white;
+        background: #a9a9a9;
       }
       
       progress::-moz-progress-bar {
-        background: grey;
+        background: white;
       }
 }
