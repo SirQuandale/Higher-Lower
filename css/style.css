@@ -185,7 +185,16 @@ progress {
     
     header {
         width: 390px;
+        height: 90px;
         margin: 20px;
+    }
+
+    header h1 {
+        margin-bottom: 15px;
+    }
+
+    header p {
+        margin-bottom: 10px;
     }
 
     .dealer-health {
@@ -200,6 +209,14 @@ progress {
 
     .user-settings-prompt {
         width: 300px;
-        margin: 35px;
+        margin: screen  ;
     }
+
+    progress::-webkit-progress-value {
+        background: white;
+      }
+      
+      progress::-moz-progress-bar {
+        background: grey;
+      }
 }
