@@ -1,4 +1,4 @@
-let dealerHealth = 18000;
+let dealerHealth = 180;
 let dealerHitDamage = 25;
 let playerHealth = 1000;
 let maxPlayerHealth = 1000;
@@ -21,6 +21,7 @@ const onScreenPrompt = document.querySelector('.screen-prompt');
 const lowerbutton = document.querySelector('.button-lager');
 const heal = document.querySelector('.healing');
 const deathScreenPrompt = document.querySelector('.lose-prompt');
+const winScreenPrompt = document.querySelector('.win-prompt');
 const deathScreen = document.querySelector('.reset');
 let playerNametag = document.querySelector('.player-name');
 const playerNameOnHealth = document.querySelector('.player-name-tag');
@@ -28,6 +29,7 @@ let selectedCovenant = document.querySelector('.covenant-select').value;
 
 //show variables everytime page refreshes
 heal.textContent = healingUsage;
+hp.value = dealerHealth;
 dmg.textContent = dealerDamage;
 pdmg.textContent = playerDamage;
 
@@ -44,19 +46,22 @@ function higher() {
     if (dealerHealth > 0) {
       dealerHealth = dealerHealth - 100;
       hp.value = dealerHealth;
+      if (dealerHealth <= 0) {
+        document.querySelector('.win-prompt').style.opacity = "100";
+        document.querySelector('.win-prompt').style.zIndex = "2";
+      }
       return dealerHealth;
-    } else {
-      alert("Dealer Died");
     }
   } else {
     onScreenPrompt.textContent = "You are hit by the dealer (chose higher but got lower)";
     if (playerHealth > 0) {
       playerHealth = playerHealth - dealerHitDamage;
       playerHP.value = playerHealth;
+      if (playerHealth <= 0) {
+        document.querySelector('.lose-prompt').style.opacity = "100";
+        document.querySelector('.lose-prompt').style.zIndex = "2";
+      }
       return playerHealth;
-    } else {
-      document.querySelector('.lose-prompt').style.opacity = "100";
-      document.querySelector('.lose-prompt').style.zIndex = "1";
     }
   }
 } else {
@@ -77,22 +82,25 @@ function lower() {
   dmg.textContent = dealerDamage;
   if (playerDamage < dealerDamage) {
     onScreenPrompt.textContent = "You hit the dealer (chose lower and got lower)";
-    if (dealerHealth >= 0) {
+    if (dealerHealth > 0) {
       dealerHealth = dealerHealth - 100;
       hp.value = dealerHealth;
+      if (dealerHealth <= 0) {
+        document.querySelector('.win-prompt').style.opacity = "100";
+        document.querySelector('.win-prompt').style.zIndex = "2";
+      }
       return dealerHealth;
-    } else {
-      alert("Dealer Died");
     }
   } else {
     onScreenPrompt.textContent = "You are hit by the dealer (chose lower but got higher)";
-    if (playerHealth >= 0) {
+    if (playerHealth > 0) {
       playerHealth = playerHealth - dealerDamage;
       playerHP.value = playerHealth;
+      if (playerHealth <= 0) {
+        document.querySelector('.lose-prompt').style.opacity = "100";
+        document.querySelector('.lose-prompt').style.zIndex = "2";
+      }
       return playerHealth;
-    } else {
-      document.querySelector('.lose-prompt').style.opacity = "100";
-      document.querySelector('.lose-prompt').style.zIndex = "2";
     }
   }
 } else {

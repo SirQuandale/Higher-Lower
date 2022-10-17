@@ -1,4 +1,4 @@
-let dealerHealth = 13000;
+let dealerHealth = 130;
 let dealerHitDamage = 25;
 let playerHealth = 1000;
 let maxPlayerHealth = 1000;
@@ -29,6 +29,7 @@ let selectedCovenant = document.querySelector('.covenant-select').value;
 
 //show variables everytime page refreshes
 heal.textContent = healingUsage;
+hp.value = dealerHealth;
 dmg.textContent = dealerDamage;
 pdmg.textContent = playerDamage;
 
@@ -56,10 +57,11 @@ function higher() {
     if (playerHealth > 0) {
       playerHealth = playerHealth - dealerHitDamage;
       playerHP.value = playerHealth;
+      if (playerHealth <= 0) {
+        document.querySelector('.lose-prompt').style.opacity = "100";
+        document.querySelector('.lose-prompt').style.zIndex = "2";
+      }
       return playerHealth;
-    } else {
-      document.querySelector('.lose-prompt').style.opacity = "100";
-      document.querySelector('.lose-prompt').style.zIndex = "2";
     }
   }
 } else {
@@ -94,10 +96,11 @@ function lower() {
     if (playerHealth > 0) {
       playerHealth = playerHealth - dealerDamage;
       playerHP.value = playerHealth;
+      if (playerHealth <= 0) {
+        document.querySelector('.lose-prompt').style.opacity = "100";
+        document.querySelector('.lose-prompt').style.zIndex = "2";
+      }
       return playerHealth;
-    } else {
-      document.querySelector('.lose-prompt').style.opacity = "100";
-      document.querySelector('.lose-prompt').style.zIndex = "2";
     }
   }
 } else {
