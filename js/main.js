@@ -1,9 +1,18 @@
-let dealerHealth = 900;
+let dealerHealth = 9000;
 let dealerHitDamage = 25;
 let playerHealth = 1000;
 let maxPlayerHealth = 1000;
 let healingUsage = 10;
 let healingAmount = 180;
+
+const level = window.location.pathname.split("/").slice(-1)[0].replace('.html',''); //gets the html page level
+if (level == "level2") { //changes dealer health depending on level
+ dealerHealth = 13000;
+}
+if (level == "level3") {
+  dealerHealth = 18000;
+}
+console.log(dealerHealth);
 
 //both player and dealer get randomised numbers
 let dealerDamage = Math.floor(Math.random() * 99) + 1; //random number between 1 and 99 every time the page is refreshed
@@ -178,6 +187,10 @@ function selectCovenant() {
         onScreenPrompt.textContent = "You chose the hard way, there's no going back";
         playerHP.value = playerHealth;
         return playerHealth;
+    }
+    if (document.querySelector('.covenant-select').value === "Covenant4") {
+      selectedCovenant = "Covenant 4";
+      healingUsage = 0;
     }
 }
 
