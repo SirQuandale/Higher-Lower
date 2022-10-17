@@ -30,10 +30,7 @@ header h1 {
 .dealer-health {
     width: 900px;
     height: 20px;
-}
-
-progress {
-    accent-color: white;
+    accent-color: #D22B2B;
 }
 
 .dealer-damage {
@@ -46,6 +43,7 @@ progress {
 .player-health {
     width: 450px;
     height: 20px;
+    accent-color: dodgerblue;
 }
 
 .player-damage {
@@ -155,6 +153,14 @@ progress {
     border-radius: 7px;
 }
 
+.healing:hover {
+    border: 1px solid black;
+}
+
+.healing:active {
+    border: 2px solid black;
+}
+
 .player-name {
     width: 200px;
     border-radius: 8px;
@@ -166,14 +172,9 @@ progress {
     border-radius: 7px;
 }
 
-@media (orientation: landscape) {
-    .healing:active {
-        border: 2px solid black;
-    }
-
-    .healing:hover {
-        border: 1px solid black;
-    }
+.heal-icon {
+    width: 28px;
+    margin-right: 450px;
 }
 
 @media (orientation: portrait) {
@@ -211,10 +212,19 @@ progress {
 
     .user-settings-prompt {
         width: 300px;
-        margin: screen  ;
+        margin: screen;
     }
 
-    progress {
-        accent-color: darkgrey;
-      }
+    .lose-prompt {
+        width: 300px;
+        margin: screen;
+    }
+
+    .lose-prompt hr {
+        width: 300px;
+    }
+
+    .heal-icon {
+        margin-right: 350px;
+    }
 }
