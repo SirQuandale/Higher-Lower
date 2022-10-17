@@ -174,7 +174,7 @@ function selectCovenant() {
     }
     if (document.querySelector('.covenant-select').value === "Covenant3") {
         selectedCovenant = "Covenant 3";
-        healingUsage = 20;
+        healingUsage = 15;
         healingAmount = 200;
         dealerHitDamage = 50;
         heal.textContent = healingUsage;
@@ -191,6 +191,17 @@ function selectCovenant() {
     if (document.querySelector('.covenant-select').value === "Covenant4") {
       selectedCovenant = "Covenant 4";
       healingUsage = 0;
+      heal.textContent = healingUsage;
+      dealerHitDamage = 35;
+      maxPlayerHealth = 500;
+        if (playerHealth >= 500) {
+          playerHealth = 500;
+        }
+        document.querySelector('.screen-prompt').style.opacity = "100";
+        document.querySelector('.covenant-select').disabled = true;
+        onScreenPrompt.textContent = "You made a big mistake";
+        playerHP.value = playerHealth;
+        return playerHealth;
     }
 }
 
