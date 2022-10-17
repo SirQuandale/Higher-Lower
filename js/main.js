@@ -12,7 +12,6 @@ if (level == "level2") { //changes dealer health depending on level
 if (level == "level3") {
   dealerHealth = 18000;
 }
-console.log(dealerHealth);
 
 //both player and dealer get randomised numbers
 let dealerDamage = Math.floor(Math.random() * 99) + 1; //random number between 1 and 99 every time the page is refreshed
