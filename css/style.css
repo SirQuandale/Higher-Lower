@@ -208,6 +208,10 @@ header h1 {
     border-radius: 8px;
 }
 
+.player-name-tag {
+    margin-bottom: -20px;
+}
+
 .covenant-select {
     width: 100px;
     height: 24px;
