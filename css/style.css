@@ -77,6 +77,48 @@ header h1 {
     width: 500px;
 }
 
+.win-prompt {
+    position: fixed;
+    text-align: center;
+    background-color: black;
+    border: 2px solid white;
+    width: 900px;
+    height: 400px;
+    margin-left: 70px;
+    opacity: 0;
+    z-index: -1;
+}
+
+.win-prompt p {
+    font-size: 30pt;
+}
+
+.win-prompt button {
+    width: 180px;
+    height: 50px;
+    border-radius: 15px;
+    border: 1px solid black;
+}
+
+.win-prompt button:hover {
+    border: 2px solid black;
+}
+
+.win-prompt button:active {
+    border: 3px solid black;
+}
+
+.win-prompt a {
+    text-decoration: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: black;
+    font-size: 10pt;
+}
+
+.win-prompt hr {
+    width: 500px;
+}
+
 .reset {
     width: 50px;
     height: 25px;
@@ -221,6 +263,15 @@ header h1 {
     }
 
     .lose-prompt hr {
+        width: 300px;
+    }
+
+    .win-prompt {
+        width: 300px;
+        margin: screen;
+    }
+
+    .win-prompt hr {
         width: 300px;
     }
 
