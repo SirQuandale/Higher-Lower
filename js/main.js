@@ -33,7 +33,7 @@ const winScreenPrompt = document.querySelector('.win-prompt');
 const deathScreen = document.querySelector('.reset');
 let playerNametag = document.querySelector('.player-name');
 const playerNameOnHealth = document.querySelector('.player-name-tag');
-let selectedCovenant = document.querySelector('.covenant-select').value;
+let selectedCovenant = document.querySelector('.covenant-select').value; //difficulty selector is named covenant due to old idea
 
 //show variables everytime page refreshes
 heal.textContent = healingUsage;
@@ -46,12 +46,12 @@ function higher() {
   if (playerHealth > 0) {
   document.querySelector('.screen-prompt').style.opacity = "100"; //screen text pops up
   playerDamage = Math.floor(Math.random() * 99) + 1;
-  pdmg.textContent = playerDamage;
+  pdmg.textContent = playerDamage; //changes the numbers on screen
   dealerDamage = Math.floor(Math.random() * 99) + 1;
   dmg.textContent = dealerDamage;
-  if (playerDamage > dealerDamage) {
-    onScreenPrompt.textContent = "You hit the dealer (chose higher and got higher)";
-    if (dealerHealth > 0) {
+  if (playerDamage > dealerDamage) { //checks if player number is higher than dealer number
+    onScreenPrompt.textContent = "You hit the dealer (chose higher and got higher)"; //help text on screen
+    if (dealerHealth > 0) { //checks if dealer health is 0. If so, win prompt pops up
       dealerHealth = dealerHealth - 100;
       hp.value = dealerHealth;
       if (dealerHealth <= 0) {
@@ -62,17 +62,17 @@ function higher() {
     }
   } else {
     onScreenPrompt.textContent = "You are hit by the dealer (chose higher but got lower)";
-    if (playerHealth > 0) {
+    if (playerHealth > 0) { //checks if player is dead
       playerHealth = playerHealth - dealerHitDamage;
       playerHP.value = playerHealth;
-      if (playerHealth <= 0) {
+      if (playerHealth <= 0) { //checks if player is dead for the second time. When health = 0, death prompt shows up
         document.querySelector('.lose-prompt').style.opacity = "100";
         document.querySelector('.lose-prompt').style.zIndex = "2";
       }
       return playerHealth;
     }
   }
-} else {
+} else { //last player health check
   document.querySelector('.lose-prompt').style.opacity = "100";
   document.querySelector('.lose-prompt').style.zIndex = "2";
 }
@@ -83,14 +83,14 @@ higherbutton.addEventListener('click', higher);
 //player guesses if he gets lower than dealer
 function lower() {
   if (playerHealth > 0) {
-  document.querySelector('.screen-prompt').style.opacity = "100";
+  document.querySelector('.screen-prompt').style.opacity = "100"; //screen text pops up
   playerDamage = Math.floor(Math.random() * 99) + 1;
-  pdmg.textContent = playerDamage;
+  pdmg.textContent = playerDamage; //changes the numbers on screen
   dealerDamage = Math.floor(Math.random() * 99) + 1;
   dmg.textContent = dealerDamage;
-  if (playerDamage < dealerDamage) {
+  if (playerDamage < dealerDamage) { //checks if player number is lower than dealer number
     onScreenPrompt.textContent = "You hit the dealer (chose lower and got lower)";
-    if (dealerHealth > 0) {
+    if (dealerHealth > 0) { //checks if dealer health is 0. If so, win prompt pops up
       dealerHealth = dealerHealth - 100;
       hp.value = dealerHealth;
       if (dealerHealth <= 0) {
@@ -101,17 +101,17 @@ function lower() {
     }
   } else {
     onScreenPrompt.textContent = "You are hit by the dealer (chose lower but got higher)";
-    if (playerHealth > 0) {
+    if (playerHealth > 0) { //checks if player is dead for the second time. When health = 0, death prompt shows up
       playerHealth = playerHealth - dealerDamage;
       playerHP.value = playerHealth;
-      if (playerHealth <= 0) {
+      if (playerHealth <= 0) { //second check nessecary for smooth gameplay
         document.querySelector('.lose-prompt').style.opacity = "100";
         document.querySelector('.lose-prompt').style.zIndex = "2";
       }
       return playerHealth;
     }
   }
-} else {
+} else { //final check
   document.querySelector('.lose-prompt').style.opacity = "100";
   document.querySelector('.lose-prompt').style.zIndex = "2";
 }
@@ -119,16 +119,16 @@ function lower() {
 
 lowerbutton.addEventListener('click', lower);
 
-function doHealing() {
+function doHealing() { //heals player
   if (healingUsage > 0) {
     if (playerHealth <= maxPlayerHealth) {
       healingUsage = healingUsage - 1;
       heal.textContent = healingUsage;
       playerHealth = playerHealth + healingAmount;
-      if (playerHealth > maxPlayerHealth) {
+      if (playerHealth > maxPlayerHealth) { //if health is above max health, it will change to the max and not above
         playerHealth = maxPlayerHealth;
       }
-      playerHP.value = playerHealth;
+      playerHP.value = playerHealth; //changes progress/health bar according to value of variable
       return playerHealth;
     }
   } else {
@@ -144,34 +144,34 @@ function deathScreenReset() {
 
 deathScreen.addEventListener('click', deathScreenReset);
 
-function selectCovenant() {
-    if (document.querySelector('.covenant-select').value === "Covenant1") {
+function selectCovenant() { //difficulty selector is named covenant due to old idea.
+    if (document.querySelector('.covenant-select').value === "Covenant1") { //easy mode, changes health and healing back to standard
         selectedCovenant = "Covenant 1";
         healingUsage = 10;
         healingAmount = 180;
         heal.textContent = healingUsage;
         dealerHitDamage = 25;
         maxPlayerHealth = 1000;
-        if (playerHealth >= 1000) {
+        if (playerHealth >= 1000) { //if health is full, than full health will not change
           playerHealth = 1000;
         }
         playerHP.value = playerHealth;
         return playerHealth;
     }
-    if (document.querySelector('.covenant-select').value === "Covenant2") {
+    if (document.querySelector('.covenant-select').value === "Covenant2") { //medium mode, reduces health and healing. Also dealer does more damage
         selectedCovenant = "Covenant 2";
         healingUsage = 6;
         healingAmount = 140;
         heal.textContent = healingUsage;
         maxPlayerHealth = 800;
         dealerHitDamage = 35;
-        if (playerHealth >= 800) {
+        if (playerHealth >= 800) { //checks if health is 800 or higher, if so, will change health to full.
           playerHealth = 800;
         }
         playerHP.value = playerHealth;
         return playerHealth;
     }
-    if (document.querySelector('.covenant-select').value === "Covenant3") {
+    if (document.querySelector('.covenant-select').value === "Covenant3") { //hard more, more healing and halve health. Dealer does more damage
         selectedCovenant = "Covenant 3";
         healingUsage = 15;
         healingAmount = 200;
@@ -181,13 +181,13 @@ function selectCovenant() {
         if (playerHealth >= 500) {
           playerHealth = 500;
         }
-        document.querySelector('.screen-prompt').style.opacity = "100";
-        document.querySelector('.covenant-select').disabled = true;
+        document.querySelector('.screen-prompt').style.opacity = "100"; 
+        document.querySelector('.covenant-select').disabled = true; //disables the difficulty selector
         onScreenPrompt.textContent = "You chose the hard way, there's no going back";
         playerHP.value = playerHealth;
         return playerHealth;
     }
-    if (document.querySelector('.covenant-select').value === "Covenant4") {
+    if (document.querySelector('.covenant-select').value === "Covenant4") { //extreme mode, halve health and no healing. same damage as medium mode
       selectedCovenant = "Covenant 4";
       healingUsage = 0;
       heal.textContent = healingUsage;
@@ -197,14 +197,14 @@ function selectCovenant() {
           playerHealth = 500;
         }
         document.querySelector('.screen-prompt').style.opacity = "100";
-        document.querySelector('.covenant-select').disabled = true;
+        document.querySelector('.covenant-select').disabled = true; //disables the difficulty selector
         onScreenPrompt.textContent = "You made a big mistake";
         playerHP.value = playerHealth;
         return playerHealth;
     }
 }
 
-function showUserSettings() {
+function showUserSettings() { //shows user settings
   document.querySelector('.user-settings-prompt').style.opacity = "100";
   document.querySelector('.user-settings-prompt').style.zIndex = "1";
   document.querySelector('.covenant-select').disabled = false;
@@ -219,10 +219,9 @@ function hideUserSettings() {
 userIconButton.addEventListener('click', showUserSettings);
 crossIconButton.addEventListener('click', hideUserSettings);
 
-function changeName() {
+function changeName() { //entered name will be displayed above health bar
   playerNameOnHealth.textContent = playerNametag.value;
-  console.log(playerNametag.value);
 }
 
-document.querySelector('.covenant-select').disabled = true;
+document.querySelector('.covenant-select').disabled = true; //enables difficulty selector each time the page is reloaded
 playerNametag.addEventListener('change', changeName);
