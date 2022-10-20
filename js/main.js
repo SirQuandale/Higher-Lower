@@ -17,7 +17,7 @@ if (level == "level3") {
 let dealerDamage = Math.floor(Math.random() * 99) + 1; //random number between 1 and 99 every time the page is refreshed
 let playerDamage = Math.floor(Math.random() * 99) + 1;
 
-//all queryselectors in main.js
+//all starter queryselectors in main.js
 const hp = document.querySelector('.dealer-health');
 const playerHP = document.querySelector('.player-health');
 const userIconButton = document.querySelector('.user-icon');
@@ -34,12 +34,24 @@ const deathScreen = document.querySelector('.reset');
 let playerNametag = document.querySelector('.player-name');
 const playerNameOnHealth = document.querySelector('.player-name-tag');
 let selectedCovenant = document.querySelector('.covenant-select').value; //difficulty selector is named covenant due to old idea
+const startButton = document.querySelector('.start');
+document.querySelector('.button-hoger').disabled = true;
+document.querySelector('.button-lager').disabled = true;
 
 //show variables everytime page refreshes
 heal.textContent = healingUsage;
 hp.value = dealerHealth;
-dmg.textContent = dealerDamage;
-pdmg.textContent = playerDamage;
+
+function startFunction() {
+  dealerDamage = Math.floor(Math.random() * 99) + 1;
+  dmg.textContent = dealerDamage;
+  document.querySelector('.start').disabled = true;
+  document.querySelector('.button-hoger').disabled = false;
+  document.querySelector('.button-lager').disabled = false;
+  pdmg.textContent = "?";
+}
+
+startButton.addEventListener('click', startFunction);
 
 //player guesses if he is going to get a higher number than dealer
 function higher() {
@@ -47,8 +59,9 @@ function higher() {
   document.querySelector('.screen-prompt').style.opacity = "100"; //screen text pops up
   playerDamage = Math.floor(Math.random() * 99) + 1;
   pdmg.textContent = playerDamage; //changes the numbers on screen
-  dealerDamage = Math.floor(Math.random() * 99) + 1;
-  dmg.textContent = dealerDamage;
+  document.querySelector('.start').disabled = false;
+  document.querySelector('.button-hoger').disabled = true;
+  document.querySelector('.button-lager').disabled = true;
   if (playerDamage > dealerDamage) { //checks if player number is higher than dealer number
     onScreenPrompt.textContent = "You hit the dealer (chose higher and got higher)"; //help text on screen
     if (dealerHealth > 0) { //checks if dealer health is 0. If so, win prompt pops up
@@ -86,8 +99,9 @@ function lower() {
   document.querySelector('.screen-prompt').style.opacity = "100"; //screen text pops up
   playerDamage = Math.floor(Math.random() * 99) + 1;
   pdmg.textContent = playerDamage; //changes the numbers on screen
-  dealerDamage = Math.floor(Math.random() * 99) + 1;
-  dmg.textContent = dealerDamage;
+  document.querySelector('.start').disabled = false;
+  document.querySelector('.button-hoger').disabled = true;
+  document.querySelector('.button-lager').disabled = true;
   if (playerDamage < dealerDamage) { //checks if player number is lower than dealer number
     onScreenPrompt.textContent = "You hit the dealer (chose lower and got lower)";
     if (dealerHealth > 0) { //checks if dealer health is 0. If so, win prompt pops up
