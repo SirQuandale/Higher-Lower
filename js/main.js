@@ -1,5 +1,5 @@
-let dealerHealth = 9000;
-let dealerHitDamage = 25;
+let dealerHealth = 5000;
+let dealerHitDamage = 35;
 let playerHealth = 1000;
 let maxPlayerHealth = 1000;
 let healingUsage = 10;
@@ -7,10 +7,10 @@ let healingAmount = 180;
 
 const level = window.location.pathname.split("/").slice(-1)[0].replace('.html',''); //gets the html page level
 if (level == "level2") { //changes dealer health depending on level
- dealerHealth = 13000;
+ dealerHealth = 10000;
 }
 if (level == "level3") {
-  dealerHealth = 18000;
+  dealerHealth = 15000;
 }
 
 //both player and dealer get randomised numbers
@@ -24,9 +24,9 @@ const userIconButton = document.querySelector('.user-icon');
 const crossIconButton = document.querySelector('.x-icon');
 const pdmg = document.querySelector('.player-damage');
 const dmg = document.querySelector('.dealer-damage');
-const higherbutton = document.querySelector('.button-hoger');
+const higherbutton = document.querySelector('.button-higher');
 const onScreenPrompt = document.querySelector('.screen-prompt');
-const lowerbutton = document.querySelector('.button-lager');
+const lowerbutton = document.querySelector('.button-lower');
 const heal = document.querySelector('.healing');
 const deathScreenPrompt = document.querySelector('.lose-prompt');
 const winScreenPrompt = document.querySelector('.win-prompt');
@@ -35,20 +35,20 @@ let playerNametag = document.querySelector('.player-name');
 const playerNameOnHealth = document.querySelector('.player-name-tag');
 let selectedCovenant = document.querySelector('.covenant-select').value; //difficulty selector is named covenant due to old idea
 const startButton = document.querySelector('.start');
-document.querySelector('.button-hoger').disabled = true;
-document.querySelector('.button-lager').disabled = true;
+document.querySelector('.button-higher').disabled = true;
+document.querySelector('.button-lower').disabled = true;
 
 //show variables everytime page refreshes
 heal.textContent = healingUsage;
 hp.value = dealerHealth;
 
-function startFunction() {
+function startFunction() { //gives the dealer a random number
   dealerDamage = Math.floor(Math.random() * 99) + 1;
   dmg.textContent = dealerDamage;
-  document.querySelector('.start').disabled = true;
-  document.querySelector('.button-hoger').disabled = false;
-  document.querySelector('.button-lager').disabled = false;
-  pdmg.textContent = "?";
+  document.querySelector('.start').disabled = true; //disables the start button
+  document.querySelector('.button-higher').disabled = false; //enables the higher button
+  document.querySelector('.button-lower').disabled = false; //enables the lower button
+  pdmg.textContent = "?"; //gives the player number a ? to avoid confusion of which number is which
 }
 
 startButton.addEventListener('click', startFunction);
@@ -60,8 +60,8 @@ function higher() {
   playerDamage = Math.floor(Math.random() * 99) + 1;
   pdmg.textContent = playerDamage; //changes the numbers on screen
   document.querySelector('.start').disabled = false;
-  document.querySelector('.button-hoger').disabled = true;
-  document.querySelector('.button-lager').disabled = true;
+  document.querySelector('.button-higher').disabled = true;
+  document.querySelector('.button-lower').disabled = true;
   if (playerDamage > dealerDamage) { //checks if player number is higher than dealer number
     onScreenPrompt.textContent = "You hit the dealer (chose higher and got higher)"; //help text on screen
     if (dealerHealth > 0) { //checks if dealer health is 0. If so, win prompt pops up
@@ -100,8 +100,8 @@ function lower() {
   playerDamage = Math.floor(Math.random() * 99) + 1;
   pdmg.textContent = playerDamage; //changes the numbers on screen
   document.querySelector('.start').disabled = false;
-  document.querySelector('.button-hoger').disabled = true;
-  document.querySelector('.button-lager').disabled = true;
+  document.querySelector('.button-higher').disabled = true;
+  document.querySelector('.button-lower').disabled = true;
   if (playerDamage < dealerDamage) { //checks if player number is lower than dealer number
     onScreenPrompt.textContent = "You hit the dealer (chose lower and got lower)";
     if (dealerHealth > 0) { //checks if dealer health is 0. If so, win prompt pops up
@@ -164,7 +164,7 @@ function selectCovenant() { //difficulty selector is named covenant due to old i
         healingUsage = 10;
         healingAmount = 180;
         heal.textContent = healingUsage;
-        dealerHitDamage = 25;
+        dealerHitDamage = 35;
         maxPlayerHealth = 1000;
         if (playerHealth >= 1000) { //if health is full, than full health will not change
           playerHealth = 1000;
@@ -174,20 +174,20 @@ function selectCovenant() { //difficulty selector is named covenant due to old i
     }
     if (document.querySelector('.covenant-select').value === "Covenant2") { //medium mode, reduces health and healing. Also dealer does more damage
         selectedCovenant = "Covenant 2";
-        healingUsage = 6;
-        healingAmount = 140;
+        healingUsage = 7;
+        healingAmount = 150;
         heal.textContent = healingUsage;
-        maxPlayerHealth = 800;
-        dealerHitDamage = 35;
-        if (playerHealth >= 800) { //checks if health is 800 or higher, if so, will change health to full.
-          playerHealth = 800;
+        maxPlayerHealth = 900;
+        dealerHitDamage = 40;
+        if (playerHealth >= 900) { //checks if health is 800 or higher, if so, will change health to full.
+          playerHealth = 900;
         }
         playerHP.value = playerHealth;
         return playerHealth;
     }
     if (document.querySelector('.covenant-select').value === "Covenant3") { //hard more, more healing and halve health. Dealer does more damage
         selectedCovenant = "Covenant 3";
-        healingUsage = 15;
+        healingUsage = 10;
         healingAmount = 200;
         dealerHitDamage = 50;
         heal.textContent = healingUsage;
@@ -195,24 +195,24 @@ function selectCovenant() { //difficulty selector is named covenant due to old i
         if (playerHealth >= 500) {
           playerHealth = 500;
         }
-        document.querySelector('.screen-prompt').style.opacity = "100"; 
+        document.querySelector('.screen-prompt').style.opacity = "100"; //shows help text
         document.querySelector('.covenant-select').disabled = true; //disables the difficulty selector
-        onScreenPrompt.textContent = "You chose the hard way, there's no going back";
+        onScreenPrompt.textContent = "You chose the hard way, there's no going back"; //help text
         playerHP.value = playerHealth;
         return playerHealth;
     }
-    if (document.querySelector('.covenant-select').value === "Covenant4") { //extreme mode, halve health and no healing. same damage as medium mode
+    if (document.querySelector('.covenant-select').value === "Covenant4") { //extreme mode, halve health and two healing. same damage as medium mode
       selectedCovenant = "Covenant 4";
-      healingUsage = 0;
+      healingUsage = 3;
       heal.textContent = healingUsage;
-      dealerHitDamage = 35;
+      dealerHitDamage = 50;
       maxPlayerHealth = 500;
         if (playerHealth >= 500) {
           playerHealth = 500;
         }
-        document.querySelector('.screen-prompt').style.opacity = "100";
+        document.querySelector('.screen-prompt').style.opacity = "100"; //shows help text
         document.querySelector('.covenant-select').disabled = true; //disables the difficulty selector
-        onScreenPrompt.textContent = "You made a big mistake";
+        onScreenPrompt.textContent = "You made a big mistake"; //help text
         playerHP.value = playerHealth;
         return playerHealth;
     }
