@@ -6,6 +6,9 @@ let healingUsage = 10;
 let healingAmount = 180;
 
 const level = window.location.pathname.split("/").slice(-1)[0].replace('.html',''); //gets the html page level
+if (level == "level1") {
+  dealerHealth = 5000; //changes dealer health depending on which level is selected, in this case level 1
+}
 if (level == "level2") { //changes dealer health depending on level
  dealerHealth = 10000;
 }
@@ -59,17 +62,17 @@ function higher() {
   document.querySelector('.screen-prompt').style.opacity = "100"; //screen text pops up
   playerDamage = Math.floor(Math.random() * 99) + 1;
   pdmg.textContent = playerDamage; //changes the numbers on screen
-  document.querySelector('.start').disabled = false;
-  document.querySelector('.button-higher').disabled = true;
-  document.querySelector('.button-lower').disabled = true;
+  document.querySelector('.start').disabled = false; //enables the start button
+  document.querySelector('.button-higher').disabled = true; //disables the higher button
+  document.querySelector('.button-lower').disabled = true; //disables the lower button
   if (playerDamage > dealerDamage) { //checks if player number is higher than dealer number
     onScreenPrompt.textContent = "You hit the dealer (chose higher and got higher)"; //help text on screen
     if (dealerHealth > 0) { //checks if dealer health is 0. If so, win prompt pops up
       dealerHealth = dealerHealth - 100;
       hp.value = dealerHealth;
       if (dealerHealth <= 0) {
-        document.querySelector('.win-prompt').style.opacity = "100";
-        document.querySelector('.win-prompt').style.zIndex = "2";
+        document.querySelector('.win-prompt').style.opacity = "100"; //shows win prompt
+        document.querySelector('.win-prompt').style.zIndex = "2"; //prioritizes win prompt
       }
       return dealerHealth;
     }
@@ -153,7 +156,7 @@ function doHealing() { //heals player
 heal.addEventListener('click', doHealing);
 
 function deathScreenReset() {
-  document.location.reload();
+  document.location.reload(); //reloads the html page
 }
 
 deathScreen.addEventListener('click', deathScreenReset);
